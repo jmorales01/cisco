@@ -2,35 +2,35 @@
 
 ### SWITCH 0
 ```c
-    enable
-    confgure terminal
-    interface range fastEthernet 0/1 - 24
-    shutdown 
+enable
+confgure terminal
+interface range fastEthernet 0/1 - 24
+shutdown 
 
-    // Etherchannel Protocolo LACP | port 1,2,3,4,5,6
-    interface range fastEthernet 0/1 - 2
-    channel-protocol lacp
-    channel-group 1 mode active
-    no shutdown
-    exit
-    interface port-channel 1
-    switchport mode trunk
+// Etherchannel Protocolo LACP | port 1,2,3,4,5,6
+interface range fastEthernet 0/1 - 2
+channel-protocol lacp
+channel-group 1 mode active
+no shutdown
+exit
+interface port-channel 1
+switchport mode trunk
 
-    interface range fastEthernet 0/3 - 4
-    channel-protocol lacp
-    channel-group 2 mode active
-    no shutdown
-    exit
-    interface port-channel 2
-    switchport mode trunk
+interface range fastEthernet 0/3 - 4
+channel-protocol lacp
+channel-group 2 mode active
+no shutdown
+exit
+interface port-channel 2
+switchport mode trunk
 
-    interface range fastEthernet 0/5 - 6
-    channel-protocol lacp
-    channel-group 4 mode active
-    no shutdown
-    exit
-    interface port-channel 4
-    switchport mode trunk
+interface range fastEthernet 0/5 - 6
+channel-protocol lacp
+channel-group 4 mode active
+no shutdown
+exit
+interface port-channel 4
+switchport mode trunk
 ```
 
 ### SWITCH 1
