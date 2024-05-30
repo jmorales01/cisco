@@ -1,7 +1,7 @@
 # REDES PC2 
 
 ### SWITCH 0
-`
+```c
     enable
     confgure terminal
     interface range fastEthernet 0/1 - 24
@@ -31,10 +31,10 @@
     exit
     interface port-channel 4
     switchport mode trunk
-`
+```
 
 ### SWITCH 1
-`
+```c
     enable
     confgure terminal
     interface range fastEthernet 0/1 - 24
@@ -64,10 +64,10 @@
     exit
     interface port-channel 5
     switchport mode trunk
-`
+```
 
 ### SWITCH 2
-`
+```c
     enable
     confgure terminal
     interface range fastEthernet 0/1 - 24
@@ -89,10 +89,10 @@
     exit
     interface port-channel 4
     switchport mode trunk
-`
+```
 
 ### SWITCH 3
-`
+```c
     // Apagar todo los switchs
     enable
     confgure terminal
@@ -115,7 +115,7 @@
     exit
     interface port-channel 5
     switchport mode trunk
-`
+```
 
 ### DHCP
 
