@@ -250,3 +250,6 @@ ip ssh version 2
 ```
 ### Router 2
 ### Router 3
+
+
+![image](https://github.com/jmorales01/cisco/assets/91076395/45e4f5d2-388e-41b1-923f-d413db60e8e3)
