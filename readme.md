@@ -82,6 +82,9 @@ exit
 interface port-channel 5
 switchport mode trunk
 
+// STP secondary
+spanning-tree vlan 1 root secondary
+
 // Configuracion pc | port Fa0/24
 interface fastEthernet 0/24
 no shutdown
@@ -92,8 +95,19 @@ switchport port-security mac-address 0090.0CDC.DC31
 switchport port-security mac-address sticky
 switchport port-security violation restrict
 
-// STP
-spanning-tree vlan 1 root secondary
+spanning-tree portfast
+spanning-tree bpduguard enable
+
+// Configuracion wireless | port Fa0/23
+interface fastEthernet 0/23
+no shutdown
+switchport mode access
+switchport port-security
+switchport port-security maximum 3
+switchport port-security mac-address sticky
+switchport port-security violation restrict
+
+
 ```
 
 ### SWITCH 2
@@ -119,11 +133,25 @@ no shutdown
 exit
 interface port-channel 4
 switchport mode trunk
+spanning-tree portfast
 
 // root bridge STP
 spanning-tree vlan 1 root primary
 
-
+// Puerto del router | port Fa0/3
+interface fastEthernet 0/3
+no shutdown
+switchport mode access
+switchport port-security
+switchport port-security maximum 3
+switchport port-security violation restrict
+switchport port-security mac-address sticky
+spanning-tree portfast
+spanning-tree bpduguard enable
+exit
+ip arp inspection vlan 1
+interface fa0/1
+ip arp inspection trust
 ```
 
 ### SWITCH 3
@@ -177,3 +205,48 @@ Max User: `100`
 Service: On
 
 ### SMTP
+
+### Wireless Router 1
+SSID: `admin`
+WPA2-PSK: `cisco123`
+
+### Router 1
+```c
+enable
+configure terminal
+
+// Acceso a switch | port Gi0/0
+interface gi0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+// Acceso a router3 | port Gi0/1
+interface gi0/1
+ip address 192.168.10.2 255.255.255.0
+no shutdown
+// Acceso a router2 | port Gi0/2
+interface gi0/2
+ip address 192.168.10.3 255.255.255.0
+no shutdown
+
+exit
+enable secret cisco123
+line console 0
+password cisco123
+login
+exit
+line vty 0 4
+password cisco123
+login
+exit
+ip domain-name google.com
+crypto key generate rsa
+username admin secret cisco123
+hostname Router01
+line vty 0 4
+transport input ssh
+login local
+exit
+ip ssh version 2
+```
+### Router 2
+### Router 3
