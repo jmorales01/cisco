@@ -1,7 +1,7 @@
 # REDES PC2 
 
 ### SWITCH 0
-c
+```c
 enable
 confgure terminal
 interface range fastEthernet 0/1 - 24
@@ -88,11 +88,11 @@ Slogin
 exit
 enable secret cisco123 
 
-
+```
 
 
 ### SWITCH 1
-c
+```c
 enable
 confgure terminal
 interface range fastEthernet 0/1 - 24
@@ -162,13 +162,13 @@ password cisco123
 Slogin
 exit
 enable secret cisco123 
-
+```
 
 
 
 
 ### SWITCH 2
-c
+```c
 enable
 confgure terminal
 interface range fastEthernet 0/1 - 24
@@ -238,13 +238,13 @@ password cisco123
 Slogin
 exit
 enable secret cisco123 
-
+```
 
 
 
 
 ### SWITCH 3
-c
+```c
 // Apagar todo los switchs
 enable
 confgure terminal
@@ -297,29 +297,29 @@ password cisco123
 Slogin
 exit
 enable secret cisco123 
-
+```
 
 ### DHCP
-IPv4: 192.168.1.2
-Mask: 255.255.255.0
-Default Gateway: 192.168.1.1
+IPv4: `192.168.1.2`
+Mask: `255.255.255.0`
+Default Gateway: `192.168.1.1`
 
-Pool Name: serverPool
-Default Gateway: 192.168.1.1
-Start IP Address: 192.168.1.20
-Subnet Mask: 255.255.255.0
-Max User: 100
+Pool Name: `serverPool`
+Default Gateway: `192.168.1.1`
+Start IP Address: `192.168.1.20`
+Subnet Mask: `255.255.255.0`
+Max User: `100`
 
 Service: On
 
 ### SMTP
 
 ### Wireless Router 1
-SSID: admin
-WPA2-PSK: cisco123
+SSID: `admin`
+WPA2-PSK: `cisco123`
 
 ### Router 1
-c
+```c
 enable
 configure terminal
 
@@ -354,7 +354,7 @@ line vty 0 4
 login local
 
 
-
+```
 ### Router 2
 //contraseña
 enable secret cisco123
